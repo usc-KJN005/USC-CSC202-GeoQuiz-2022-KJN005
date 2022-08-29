@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel
 
 class QuizViewModel : ViewModel() {
 
-    /** Stores Question Variables **/
+    /** Variables **/
     var currentIndex = 0
     var isCheater = false //Cheat Variable
 
-    /** Question references - Includes if question is true or false **/
+    // Question references - Includes if question is true or false
     private val questionBank = listOf(
         Question(R.string.question_australia, true),
         Question(R.string.question_oceans, true),
@@ -26,6 +26,7 @@ class QuizViewModel : ViewModel() {
     val currentQuestionText: Int
         get() = questionBank[currentIndex].textResId
 
+    // Button redirects
     fun moveToPrevious() {
         currentIndex = (currentIndex - 1) % questionBank.size
         if (currentIndex == -1) currentIndex = questionBank.lastIndex
@@ -34,5 +35,6 @@ class QuizViewModel : ViewModel() {
     fun moveToNext() {
         currentIndex = (currentIndex + 1) % questionBank.size
     }
+
 
 }
